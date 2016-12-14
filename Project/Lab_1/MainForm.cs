@@ -25,6 +25,9 @@ namespace Lab_1
         {
             _reliabilityAssessor = new ReliabilityAssessor();
 
+            cmbSimulationReconfigurationAlgoritmType.SelectedIndex = 0;
+            cmbPlotType.SelectedIndex = 0;
+
             //// Data arrays.
             //string[] seriesArray = { "Cats", "Dogs" };
             //int[] pointsArray = { 1, 2 };
@@ -135,6 +138,20 @@ namespace Lab_1
             inputConfig.L2LamdaPU = nudL2LamdaPU.Value;
             inputConfig.L2T = nudL2LamdaT.Value;
             inputConfig.L2M = nudL2M.Value;
+
+            SimulationConfig simulationConfig = new SimulationConfig();
+
+            simulationConfig.AlgoritmType = (AlgoritmType) cmbSimulationReconfigurationAlgoritmType.SelectedIndex;
+            simulationConfig.LambdaControlReconfigurationSystem = nudLambdaControlReconfigurationSystem.Value;
+            simulationConfig.LambdaElement = nudLambdaElement.Value;
+            simulationConfig.LambdaMajorityElement = nudLambdaMajorityElement.Value;
+            simulationConfig.NTiersCount = nudNTiersCount.Value;
+            simulationConfig.RImpactElementsAffected = nudRImpactElementsAffected.Value;
+            simulationConfig.SimulationTime = nudSimulationTime.Value;
+            simulationConfig.TAcceptableReconfigurationTime = nudTAcceptableReconfigurationTime.Value;
+            simulationConfig.TImpactStep = nudTImpactStep.Value;
+
+            inputConfig.SimulationConfig = simulationConfig;
 
             return inputConfig;
         }

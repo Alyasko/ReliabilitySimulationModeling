@@ -14,8 +14,8 @@ namespace Lab_1.Model
         public Decimal LambdaMajorityElement { get; set; }
         public Decimal LambdaControlReconfigurationSystem { get; set; }
         public Decimal TAcceptableReconfigurationTime { get; set; }
-        public Decimal RMinImpactElementsAffected { get; set; }
-        public Decimal RMaxImpactElementsAffected { get; set; }
+        public Decimal RImpactElementsAffected { get; set; }
         public Decimal TImpactStep { get; set; }
+        public Decimal SimulationTime { get; set; }
     }
 }
