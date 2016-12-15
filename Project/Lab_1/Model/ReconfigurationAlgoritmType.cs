@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lab_1.Model
 {
-    public enum AlgoritmType
+    public enum ReconfigurationAlgoritmType
     {
         MajorityConfigToSingleChannelConfig,
         SingleChannelConfigToMajorityConfig

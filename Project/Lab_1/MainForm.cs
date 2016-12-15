@@ -141,15 +141,15 @@ namespace Lab_1
 
             SimulationConfig simulationConfig = new SimulationConfig();
 
-            simulationConfig.AlgoritmType = (AlgoritmType) cmbSimulationReconfigurationAlgoritmType.SelectedIndex;
+            simulationConfig.AlgoritmType = (ReconfigurationAlgoritmType) cmbSimulationReconfigurationAlgoritmType.SelectedIndex;
             simulationConfig.LambdaControlReconfigurationSystem = nudLambdaControlReconfigurationSystem.Value;
             simulationConfig.LambdaElement = nudLambdaElement.Value;
             simulationConfig.LambdaMajorityElement = nudLambdaMajorityElement.Value;
-            simulationConfig.NTiersCount = nudNTiersCount.Value;
-            simulationConfig.RImpactElementsAffected = nudRImpactElementsAffected.Value;
-            simulationConfig.SimulationTime = nudSimulationTime.Value;
-            simulationConfig.TAcceptableReconfigurationTime = nudTAcceptableReconfigurationTime.Value;
-            simulationConfig.TImpactStep = nudTImpactStep.Value;
+            simulationConfig.NTiersCount = (int) nudNTiersCount.Value;
+            simulationConfig.RImpactElementsAffected = (int) nudRImpactElementsAffected.Value;
+            simulationConfig.SimulationTime = (double) nudSimulationTime.Value;
+            simulationConfig.TAcceptableReconfigurationTime = (int) nudTAcceptableReconfigurationTime.Value;
+            simulationConfig.ImpactProbability = (double) nudImpactProbability.Value;
 
             inputConfig.SimulationConfig = simulationConfig;
 

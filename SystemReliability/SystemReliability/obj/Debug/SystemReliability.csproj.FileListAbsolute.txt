@@ -1,1 +1,5 @@
 E:\Лабы_4.7\Надежность\SystemReliability\SystemReliability\bin\Debug\SystemReliability.exe.config
+P:\Projects\University\ReliabilitySimulationModeling\SystemReliability\SystemReliability\bin\Debug\SystemReliability.exe.config
+P:\Projects\University\ReliabilitySimulationModeling\SystemReliability\SystemReliability\obj\Debug\SystemReliability.csprojResolveAssemblyReference.cache
+P:\Projects\University\ReliabilitySimulationModeling\SystemReliability\SystemReliability\obj\Debug\SystemReliability.Properties.Resources.resources
+P:\Projects\University\ReliabilitySimulationModeling\SystemReliability\SystemReliability\obj\Debug\SystemReliability.csproj.GenerateResource.Cache

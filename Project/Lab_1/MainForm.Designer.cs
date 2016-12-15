@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.rtbOutput = new System.Windows.Forms.RichTextBox();
@@ -100,8 +100,10 @@
             this.label24 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.cmbSimulationReconfigurationAlgoritmType = new System.Windows.Forms.ComboBox();
-            this.nudTImpactStep = new System.Windows.Forms.NumericUpDown();
+            this.nudSimulationTime = new System.Windows.Forms.NumericUpDown();
+            this.nudImpactProbability = new System.Windows.Forms.NumericUpDown();
             this.label42 = new System.Windows.Forms.Label();
+            this.label40 = new System.Windows.Forms.Label();
             this.label41 = new System.Windows.Forms.Label();
             this.nudRImpactElementsAffected = new System.Windows.Forms.NumericUpDown();
             this.label43 = new System.Windows.Forms.Label();
@@ -120,8 +122,6 @@
             this.plotView = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbPlotType = new System.Windows.Forms.ComboBox();
-            this.nudSimulationTime = new System.Windows.Forms.NumericUpDown();
-            this.label40 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -155,7 +155,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudL2LamdaI)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudL2N)).BeginInit();
             this.tabPage4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudTImpactStep)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudSimulationTime)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudImpactProbability)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudRImpactElementsAffected)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudTAcceptableReconfigurationTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudLambdaControlReconfigurationSystem)).BeginInit();
@@ -164,7 +165,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudNTiersCount)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plotView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudSimulationTime)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -1042,7 +1042,7 @@
             // 
             this.tabPage4.Controls.Add(this.cmbSimulationReconfigurationAlgoritmType);
             this.tabPage4.Controls.Add(this.nudSimulationTime);
-            this.tabPage4.Controls.Add(this.nudTImpactStep);
+            this.tabPage4.Controls.Add(this.nudImpactProbability);
             this.tabPage4.Controls.Add(this.label42);
             this.tabPage4.Controls.Add(this.label40);
             this.tabPage4.Controls.Add(this.label41);
@@ -1078,24 +1078,47 @@
             this.cmbSimulationReconfigurationAlgoritmType.Size = new System.Drawing.Size(263, 21);
             this.cmbSimulationReconfigurationAlgoritmType.TabIndex = 4;
             // 
-            // nudTImpactStep
+            // nudSimulationTime
             // 
-            this.nudTImpactStep.DecimalPlaces = 2;
-            this.nudTImpactStep.Increment = new decimal(new int[] {
+            this.nudSimulationTime.DecimalPlaces = 2;
+            this.nudSimulationTime.Increment = new decimal(new int[] {
             1,
             0,
             0,
             131072});
-            this.nudTImpactStep.Location = new System.Drawing.Point(201, 208);
-            this.nudTImpactStep.Maximum = new decimal(new int[] {
+            this.nudSimulationTime.Location = new System.Drawing.Point(201, 251);
+            this.nudSimulationTime.Maximum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.nudTImpactStep.Name = "nudTImpactStep";
-            this.nudTImpactStep.Size = new System.Drawing.Size(72, 20);
-            this.nudTImpactStep.TabIndex = 3;
-            this.nudTImpactStep.Value = new decimal(new int[] {
+            this.nudSimulationTime.Name = "nudSimulationTime";
+            this.nudSimulationTime.Size = new System.Drawing.Size(72, 20);
+            this.nudSimulationTime.TabIndex = 3;
+            this.nudSimulationTime.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            131072});
+            // 
+            // nudImpactProbability
+            // 
+            this.nudImpactProbability.DecimalPlaces = 2;
+            this.nudImpactProbability.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.nudImpactProbability.Location = new System.Drawing.Point(201, 208);
+            this.nudImpactProbability.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudImpactProbability.Name = "nudImpactProbability";
+            this.nudImpactProbability.Size = new System.Drawing.Size(72, 20);
+            this.nudImpactProbability.TabIndex = 3;
+            this.nudImpactProbability.Value = new decimal(new int[] {
             5,
             0,
             0,
@@ -1109,6 +1132,15 @@
             this.label42.Size = new System.Drawing.Size(127, 13);
             this.label42.TabIndex = 2;
             this.label42.Text = "Reconfiguration algorithm";
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(117, 253);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(77, 13);
+            this.label40.TabIndex = 2;
+            this.label40.Text = "Simulation time";
             // 
             // label41
             // 
@@ -1313,17 +1345,17 @@
             this.plotView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea3.Name = "ChartArea1";
-            this.plotView.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.plotView.Legends.Add(legend3);
+            chartArea1.Name = "ChartArea1";
+            this.plotView.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.plotView.Legends.Add(legend1);
             this.plotView.Location = new System.Drawing.Point(11, 33);
             this.plotView.Name = "plotView";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.plotView.Series.Add(series3);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.plotView.Series.Add(series1);
             this.plotView.Size = new System.Drawing.Size(738, 387);
             this.plotView.TabIndex = 2;
             this.plotView.Text = "chart1";
@@ -1358,38 +1390,6 @@
             this.cmbPlotType.Name = "cmbPlotType";
             this.cmbPlotType.Size = new System.Drawing.Size(568, 21);
             this.cmbPlotType.TabIndex = 0;
-            // 
-            // nudSimulationTime
-            // 
-            this.nudSimulationTime.DecimalPlaces = 2;
-            this.nudSimulationTime.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-            this.nudSimulationTime.Location = new System.Drawing.Point(201, 251);
-            this.nudSimulationTime.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nudSimulationTime.Name = "nudSimulationTime";
-            this.nudSimulationTime.Size = new System.Drawing.Size(72, 20);
-            this.nudSimulationTime.TabIndex = 3;
-            this.nudSimulationTime.Value = new decimal(new int[] {
-            5,
-            0,
-            0,
-            131072});
-            // 
-            // label40
-            // 
-            this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(117, 253);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(77, 13);
-            this.label40.TabIndex = 2;
-            this.label40.Text = "Simulation time";
             // 
             // MainForm
             // 
@@ -1441,7 +1441,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudL2N)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudTImpactStep)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudSimulationTime)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudImpactProbability)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudRImpactElementsAffected)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudTAcceptableReconfigurationTime)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudLambdaControlReconfigurationSystem)).EndInit();
@@ -1451,7 +1452,6 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plotView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudSimulationTime)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1541,7 +1541,7 @@
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.NumericUpDown nudTAcceptableReconfigurationTime;
         private System.Windows.Forms.Label label39;
-        private System.Windows.Forms.NumericUpDown nudTImpactStep;
+        private System.Windows.Forms.NumericUpDown nudImpactProbability;
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.ComboBox cmbSimulationReconfigurationAlgoritmType;
         private System.Windows.Forms.Label label42;

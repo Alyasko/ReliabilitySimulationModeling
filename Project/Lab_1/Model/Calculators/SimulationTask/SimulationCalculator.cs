@@ -5,24 +5,45 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Lab_1.Model.Abstract;
+using Lab_1.Model.Calculators.SimulationTask.ReconfigurationAlgorithms;
 
 namespace Lab_1.Model.Calculators.SimulationTask
 {
     public class SimulationCalculator : AbstractPlotCalculator
     {
+        private Simulator _simulator;
+
         public SimulationCalculator(InputConfig inputConfig) : base(inputConfig)
         {
+            _simulator = new Simulator(inputConfig.SimulationConfig);
+            _simulator.IterationsCount = 100;
+            switch (inputConfig.SimulationConfig.AlgoritmType)
+            {
+                case ReconfigurationAlgoritmType.MajorityConfigToSingleChannelConfig:
+                    _simulator.ReconfigureAlgorithm = new MajorityToSingleReconfigurationAlgorithm();
+                    break;
+                case ReconfigurationAlgoritmType.SingleChannelConfigToMajorityConfig:
+                    _simulator.ReconfigureAlgorithm = new SingleToMajorityReconfigurationAlgorithm();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
 
         public override IDictionary<string, PointF[]> Calculate()
         {
             IDictionary<string, PointF[]> result = new Dictionary<string, PointF[]>();
 
-            PointF[] yfxPointFs = CalculateChartPoints(InputConfig.L2T, 10,
-                (x) => (float)(x*x)
-                ).ToArray();
+            PointF[] yfxPointFs = CalculateChartPoints(InputConfig.L2T, 10, (x) =>
+            {
+                _simulator.SimulationTime = x;
 
-            
+                _simulator.Run();
+
+                return _simulator.SuccesOperationProbability;
+            }).ToArray();
+
+
             //Output += "--- Inherent redundancy reliability growth ---\n";
             result.Add("Y = F(X)", yfxPointFs);
 

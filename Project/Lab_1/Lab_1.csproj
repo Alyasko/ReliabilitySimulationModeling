@@ -54,15 +54,29 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Abstract\AbstractPlotCalculator.cs" />
-    <Compile Include="Model\AlgoritmType.cs" />
+    <Compile Include="Model\ReconfigurationAlgoritmType.cs" />
     <Compile Include="Model\Calculators\ComparisonHardFaultsCalculator.cs" />
     <Compile Include="Model\Calculators\Lab2\L2Task3DynamicRedundancy.cs" />
     <Compile Include="Model\Calculators\Lab2\L2Task1PassiveRedundancy.cs" />
     <Compile Include="Model\Calculators\Lab2\L2Task2MajorRedundanty.cs" />
+    <Compile Include="Model\Calculators\SimulationTask\Element.cs" />
+    <Compile Include="Model\Calculators\SimulationTask\FailureInjector.cs" />
+    <Compile Include="Model\Calculators\SimulationTask\Floor.cs" />
+    <Compile Include="Model\Calculators\SimulationTask\MajorityElement.cs" />
+    <Compile Include="Model\Calculators\SimulationTask\MajorityElementMode.cs" />
+    <Compile Include="Model\Calculators\SimulationTask\ReconfigurationAlgorithms\MajorityToSingleReconfigurationAlgorithm.cs" />
+    <Compile Include="Model\Calculators\SimulationTask\ReconfigurationAlgorithms\SingleToMajorityReconfigurationAlgorithm.cs" />
+    <Compile Include="Model\Calculators\SimulationTask\ProbabilityBasket.cs" />
+    <Compile Include="Model\Calculators\SimulationTask\ControlReconfigurationSystem.cs" />
     <Compile Include="Model\Calculators\SimulationTask\SimulationCalculator.cs" />
+    <Compile Include="Model\Calculators\SimulationTask\Simulator.cs" />
+    <Compile Include="Model\Calculators\SimulationTask\TargetSystem.cs" />
+    <Compile Include="Model\Contracts\IElement.cs" />
+    <Compile Include="Model\Contracts\IHardwareComponent.cs" />
     <Compile Include="Model\Contracts\IPlotCalculator.cs" />
     <Compile Include="Model\Calculators\CriticalConditionsHardFaultsCalculator.cs" />
     <Compile Include="Model\Calculators\CyclingWordHardFaultsCalculator.cs" />
+    <Compile Include="Model\Contracts\IReconfigurationAlgorithm.cs" />
     <Compile Include="Model\InputConfig.cs" />
     <Compile Include="Model\Calculators\NormalConditionsErrorsCalculator.cs" />
     <Compile Include="Model\Calculators\NormalConditionsHardFaultsCalculator.cs" />
