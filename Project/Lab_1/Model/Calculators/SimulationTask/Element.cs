@@ -13,5 +13,10 @@ namespace Lab_1.Model.Calculators.SimulationTask
             FailureRate = failureRate;
             IsAlive = true;
         }
+
+        public override string ToString()
+        {
+            return $"Alive: {IsAlive}";
+        }
     }
 }

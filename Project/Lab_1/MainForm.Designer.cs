@@ -1119,7 +1119,7 @@
             this.nudImpactProbability.Size = new System.Drawing.Size(72, 20);
             this.nudImpactProbability.TabIndex = 3;
             this.nudImpactProbability.Value = new decimal(new int[] {
-            5,
+            50,
             0,
             0,
             131072});

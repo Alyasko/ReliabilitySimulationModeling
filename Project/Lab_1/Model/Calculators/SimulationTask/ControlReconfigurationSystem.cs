@@ -20,12 +20,12 @@ namespace Lab_1.Model.Calculators.SimulationTask
 
         public bool CheckSystem()
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public bool ReconfigureSystem()
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public Decimal FailureRate { get; set; }

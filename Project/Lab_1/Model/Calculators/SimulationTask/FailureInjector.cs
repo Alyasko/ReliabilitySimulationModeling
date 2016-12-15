@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Lab_1.Model.Contracts;
 
 namespace Lab_1.Model.Calculators.SimulationTask
 {
@@ -14,12 +17,40 @@ namespace Lab_1.Model.Calculators.SimulationTask
 
         public void SimulateWearingOff()
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public void SimulateImpact()
         {
-            RandomEvent.Instance.Occured(0.5);
+            bool impactHappend = RandomEvent.Instance.Occured(ImpactProbability);
+
+            if (impactHappend == true)
+            {
+                SpreadFailures();
+            }
+        }
+
+        private void SpreadFailures()
+        {
+            IList<IElement> elementsForImpact = GetElementsForImpact();
+
+            for (int i = 0; i < ImpactElementsCount; i++)
+            {
+                int failedElementIndex = RandomEvent.Instance.RandomInstance.Next(0, elementsForImpact.Count);
+                elementsForImpact[failedElementIndex].IsAlive = false;
+            }
+        }
+
+        private IList<IElement> GetElementsForImpact()
+        {
+            List<IElement> result = new List<IElement>();
+
+            foreach (Floor floor in TargetSystem.Floors)
+            {
+                result.AddRange(floor.Elements);
+            }
+
+            return result;
         }
 
         public TargetSystem TargetSystem { get; set; }
