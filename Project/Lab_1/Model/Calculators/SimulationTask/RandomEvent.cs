@@ -23,6 +23,11 @@ namespace Lab_1.Model.Calculators.SimulationTask
             return _random.NextDouble() <= probability;
         }
 
+        public Random RandomInstance
+        {
+            get { return _random; }
+        }
+
         private static Lazy<RandomEvent> _randomEvent = new Lazy<RandomEvent>();
 
         public static RandomEvent Instance
