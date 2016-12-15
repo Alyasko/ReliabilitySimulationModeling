@@ -4,6 +4,6 @@ namespace Lab_1.Model.Contracts
 {
     public interface IReconfigurationAlgorithm
     {
-        bool Reconfigure(TargetSystem targetSystem);
+        void Reconfigure(TargetSystem targetSystem);
     }
 }

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Linq;
 using Lab_1.Model.Contracts;
 
 namespace Lab_1.Model.Calculators.SimulationTask
@@ -9,7 +11,7 @@ namespace Lab_1.Model.Calculators.SimulationTask
         public ControlReconfigurationSystem()
         {
             IsAlive = true;
-            ReconfigureAlgorithm = null;
+            ReconfigurationAlgorithm = null;
         }
 
         public ControlReconfigurationSystem(TargetSystem targetSystem, int maximumReconfigurationTime): this()
@@ -20,17 +22,36 @@ namespace Lab_1.Model.Calculators.SimulationTask
 
         public bool CheckSystem()
         {
-            return true;
+            return false;
         }
 
         public bool ReconfigureSystem()
         {
-            return true;
+            bool systemWorks = false;
+
+            int totalConfigurationsForTest = (int) Math.Pow(4, TargetSystem.Floors.Length) - 1;
+
+            int bounds = MaximumReconfigurationTime < totalConfigurationsForTest
+                ? MaximumReconfigurationTime
+                : totalConfigurationsForTest;
+
+            for (int i = 0; i < bounds; i++)
+            {
+                ReconfigurationAlgorithm.Reconfigure(TargetSystem);
+                Debug.WriteLine(TargetSystem.Floors.Aggregate("", (s, floor) => s += $"{(int)floor.MajorityElement.Mode}"));
+                systemWorks = CheckSystem();
+                if (systemWorks == true)
+                {
+                    break;
+                }
+            }
+
+            return systemWorks;
         }
 
         public Decimal FailureRate { get; set; }
         public bool IsAlive { get; set; }
-        public IReconfigurationAlgorithm ReconfigureAlgorithm { get; set; }
+        public IReconfigurationAlgorithm ReconfigurationAlgorithm { get; set; }
 
         public TargetSystem TargetSystem { get; set; }
         public int MaximumReconfigurationTime { get; set; }

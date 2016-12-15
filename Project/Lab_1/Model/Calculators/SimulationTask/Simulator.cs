@@ -15,7 +15,7 @@ namespace Lab_1.Model.Calculators.SimulationTask
 
             ControlReconfigurationSystem = new ControlReconfigurationSystem(TargetSystem, config.TAcceptableReconfigurationTime);
             ControlReconfigurationSystem.FailureRate = config.LambdaControlReconfigurationSystem;
-            ControlReconfigurationSystem.ReconfigureAlgorithm = ReconfigureAlgorithm;
+            ControlReconfigurationSystem.ReconfigurationAlgorithm = ReconfigureAlgorithm;
 
             FailureInjector = new FailureInjector(TargetSystem, config.RImpactElementsAffected, config.SimulationTime, config.ImpactProbability);
         }
@@ -45,7 +45,7 @@ namespace Lab_1.Model.Calculators.SimulationTask
             }
             else
             {
-                bool successfullReconfig = TryReconfigureSystem();
+                bool successfullReconfig = ControlReconfigurationSystem.ReconfigureSystem();
 
                 if (successfullReconfig == true)
                 {
@@ -58,20 +58,6 @@ namespace Lab_1.Model.Calculators.SimulationTask
             }
         }
 
-        private bool TryReconfigureSystem()
-        {
-            bool successfullReconfig = false;
-            for (int i = 0; i < ControlReconfigurationSystem.MaximumReconfigurationTime; i++)
-            {
-                successfullReconfig = ControlReconfigurationSystem.ReconfigureSystem();
-                if (successfullReconfig == true)
-                {
-                    break;
-                }
-            }
-            return successfullReconfig;
-        }
-
         public float SuccesOperationProbability { get; set; }
         public Decimal SimulationTime { get; set; }
         public int IterationsCount { get; set; }
@@ -81,7 +67,12 @@ namespace Lab_1.Model.Calculators.SimulationTask
 
         public ControlReconfigurationSystem ControlReconfigurationSystem { get; set; }
         public FailureInjector FailureInjector { get; set; }
-        public IReconfigurationAlgorithm ReconfigureAlgorithm { get; set; }
+
+        public IReconfigurationAlgorithm ReconfigureAlgorithm
+        {
+            get { return ControlReconfigurationSystem.ReconfigurationAlgorithm; }
+            set { ControlReconfigurationSystem.ReconfigurationAlgorithm = value; }
+        }
 
     }
 }

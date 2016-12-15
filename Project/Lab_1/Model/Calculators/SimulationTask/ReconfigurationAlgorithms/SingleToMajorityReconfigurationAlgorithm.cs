@@ -4,7 +4,7 @@ namespace Lab_1.Model.Calculators.SimulationTask.ReconfigurationAlgorithms
 {
     public class SingleToMajorityReconfigurationAlgorithm : IReconfigurationAlgorithm
     {
-        public bool Reconfigure(TargetSystem targetSystem)
+        public void Reconfigure(TargetSystem targetSystem)
         {
             throw new System.NotImplementedException();
         }

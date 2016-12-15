@@ -17,5 +17,10 @@ namespace Lab_1.Model.Calculators.SimulationTask
         public bool IsAlive { get; set; }
         public Element[] Elements { get; set; }
         public MajorityElement MajorityElement { get; set; }
+
+        public override string ToString()
+        {
+            return $"Mode: {MajorityElement.Mode}";
+        }
     }
 }

@@ -2,6 +2,9 @@
 {
     public enum MajorityElementMode
     {
-        Majority, FirstChannel, SecondChannel, ThirdChannel
+        Majority,
+        FirstChannel,
+        SecondChannel,
+        ThirdChannel
     }
 }

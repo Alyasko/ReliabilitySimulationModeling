@@ -16,7 +16,7 @@ namespace Lab_1.Model.Calculators.SimulationTask
         public SimulationCalculator(InputConfig inputConfig) : base(inputConfig)
         {
             _simulator = new Simulator(inputConfig.SimulationConfig);
-            _simulator.IterationsCount = 100;
+            _simulator.IterationsCount = 1;
             switch (inputConfig.SimulationConfig.AlgoritmType)
             {
                 case ReconfigurationAlgoritmType.MajorityConfigToSingleChannelConfig:
@@ -34,11 +34,15 @@ namespace Lab_1.Model.Calculators.SimulationTask
         {
             IDictionary<string, PointF[]> result = new Dictionary<string, PointF[]>();
 
+            _simulator.SimulationTime = 0;
+
+            _simulator.Run();
+
             PointF[] yfxPointFs = CalculateChartPoints(InputConfig.L2T, 10, (x) =>
             {
                 _simulator.SimulationTime = x;
 
-                _simulator.Run();
+                //_simulator.Run();
 
                 return _simulator.SuccesOperationProbability;
             }).ToArray();
