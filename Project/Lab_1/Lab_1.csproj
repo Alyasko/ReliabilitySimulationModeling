@@ -54,6 +54,7 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Abstract\AbstractPlotCalculator.cs" />
+    <Compile Include="Model\Calculators\SimulationTask\RandomEvent.cs" />
     <Compile Include="Model\ReconfigurationAlgoritmType.cs" />
     <Compile Include="Model\Calculators\ComparisonHardFaultsCalculator.cs" />
     <Compile Include="Model\Calculators\Lab2\L2Task3DynamicRedundancy.cs" />

@@ -19,7 +19,7 @@ namespace Lab_1.Model.Calculators.SimulationTask
 
         public void SimulateImpact()
         {
-            throw new NotImplementedException();
+            RandomEvent.Instance.Occured(0.5);
         }
 
         public TargetSystem TargetSystem { get; set; }

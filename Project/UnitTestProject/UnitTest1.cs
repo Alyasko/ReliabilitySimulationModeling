@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using Lab_1.Model.Calculators.SimulationTask;
 using Lab_1.Model.Utils;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -33,6 +35,16 @@ namespace UnitTestProject
         {
             double result = MathUtils.Fact(5);
             Assert.AreEqual(120, result);
+        }
+
+        [TestMethod]
+        public void RandomTest()
+        {
+            for (int i = 0; i < 100; i++)
+            {
+                Debug.Write(RandomEvent.Instance.Occured(0.01) ? "1": "0");
+            }
+            
         }
     }
 }
