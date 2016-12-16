@@ -101,9 +101,11 @@
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.rtbSimulationOutput = new System.Windows.Forms.RichTextBox();
             this.cmbSimulationReconfigurationAlgoritmType = new System.Windows.Forms.ComboBox();
+            this.nudExperimentsCount = new System.Windows.Forms.NumericUpDown();
             this.nudSimulationLength = new System.Windows.Forms.NumericUpDown();
             this.nudImpactProbability = new System.Windows.Forms.NumericUpDown();
             this.label42 = new System.Windows.Forms.Label();
+            this.label44 = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
             this.label41 = new System.Windows.Forms.Label();
             this.nudRImpactElementsAffected = new System.Windows.Forms.NumericUpDown();
@@ -123,8 +125,6 @@
             this.plotView = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbPlotType = new System.Windows.Forms.ComboBox();
-            this.nudExperimentsCount = new System.Windows.Forms.NumericUpDown();
-            this.label44 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -158,6 +158,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudL2LamdaI)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudL2N)).BeginInit();
             this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudExperimentsCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudSimulationLength)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudImpactProbability)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudRImpactElementsAffected)).BeginInit();
@@ -168,7 +169,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudNTiersCount)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plotView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudExperimentsCount)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -1096,6 +1096,23 @@
             this.cmbSimulationReconfigurationAlgoritmType.Size = new System.Drawing.Size(263, 21);
             this.cmbSimulationReconfigurationAlgoritmType.TabIndex = 4;
             // 
+            // nudExperimentsCount
+            // 
+            this.nudExperimentsCount.Location = new System.Drawing.Point(201, 277);
+            this.nudExperimentsCount.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.nudExperimentsCount.Name = "nudExperimentsCount";
+            this.nudExperimentsCount.Size = new System.Drawing.Size(72, 20);
+            this.nudExperimentsCount.TabIndex = 3;
+            this.nudExperimentsCount.Value = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            // 
             // nudSimulationLength
             // 
             this.nudSimulationLength.Location = new System.Drawing.Point(201, 251);
@@ -1145,6 +1162,15 @@
             this.label42.TabIndex = 2;
             this.label42.Text = "Reconfiguration algorithm";
             // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Location = new System.Drawing.Point(100, 279);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(94, 13);
+            this.label44.TabIndex = 2;
+            this.label44.Text = "Experiments count";
+            // 
             // label40
             // 
             this.label40.AutoSize = true;
@@ -1159,9 +1185,9 @@
             this.label41.AutoSize = true;
             this.label41.Location = new System.Drawing.Point(94, 210);
             this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(100, 13);
+            this.label41.Size = new System.Drawing.Size(103, 13);
             this.label41.TabIndex = 2;
-            this.label41.Text = "t (impact probability)";
+            this.label41.Text = "p (impact probability)";
             // 
             // nudRImpactElementsAffected
             // 
@@ -1403,32 +1429,6 @@
             this.cmbPlotType.Size = new System.Drawing.Size(568, 21);
             this.cmbPlotType.TabIndex = 0;
             // 
-            // nudExperimentsCount
-            // 
-            this.nudExperimentsCount.Location = new System.Drawing.Point(201, 277);
-            this.nudExperimentsCount.Maximum = new decimal(new int[] {
-            10000000,
-            0,
-            0,
-            0});
-            this.nudExperimentsCount.Name = "nudExperimentsCount";
-            this.nudExperimentsCount.Size = new System.Drawing.Size(72, 20);
-            this.nudExperimentsCount.TabIndex = 3;
-            this.nudExperimentsCount.Value = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            // 
-            // label44
-            // 
-            this.label44.AutoSize = true;
-            this.label44.Location = new System.Drawing.Point(100, 279);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(94, 13);
-            this.label44.TabIndex = 2;
-            this.label44.Text = "Experiments count";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1479,6 +1479,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudL2N)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudExperimentsCount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudSimulationLength)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudImpactProbability)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudRImpactElementsAffected)).EndInit();
@@ -1490,7 +1491,6 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.plotView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudExperimentsCount)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -89,14 +89,22 @@ namespace Lab_1.Model.Calculators.SimulationTask
             {
                 _recoveringIssued = true;
 
-                bool successfullReconfig = ControlReconfigurationSystem.ReconfigureSystem();
-                //Debug.WriteLine(TargetSystem.Floors.Aggregate("", (s, floor) => s += (int)floor.MajorityElement.Mode + " "));
-
-                if (successfullReconfig == true)
+                if (ControlReconfigurationSystem.IsAlive)
                 {
-                    _probabilityBasket.Success();
-                    _recoverCounter += ControlReconfigurationSystem.RecoverAttemptsCount;
-                    _successfullRecoverCounter++;
+                    bool successfullReconfig = ControlReconfigurationSystem.ReconfigureSystem();
+                    //Debug.WriteLine(TargetSystem.Floors.Aggregate("", (s, floor) => s += (int)floor.MajorityElement.Mode + " "));
+
+                    if (successfullReconfig == true)
+                    {
+                        _probabilityBasket.Success();
+                        _recoverCounter += ControlReconfigurationSystem.RecoverAttemptsCount;
+                        _successfullRecoverCounter++;
+                    }
+                    else
+                    {
+                        _recoveryFailed = true;
+                        _probabilityBasket.Failed();
+                    }
                 }
                 else
                 {
