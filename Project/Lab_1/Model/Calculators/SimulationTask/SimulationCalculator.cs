@@ -38,15 +38,26 @@ namespace Lab_1.Model.Calculators.SimulationTask
 
             //_simulator.Run();
 
+            int reconfigurationFailsCount = 0;
+
             PointF[] yfxPointFs = CalculateChartPoints((decimal) InputConfig.SimulationConfig.SimulationTime, 10, (x) =>
             {
                 _simulator.SimulationTime = (double) x;
 
                 _simulator.Run();
 
+                if (_simulator.ReconfigurationFailed)
+                {
+                    reconfigurationFailsCount++;
+                }
+
+                Output += _simulator.Status + "\n";
+
                 return _simulator.SuccesOperationProbability;
             }).ToArray();
 
+
+            Output += $"Reconfiguration failes: {reconfigurationFailsCount}\n";
 
             //Output += "--- Inherent redundancy reliability growth ---\n";
             result.Add("Y = F(X)", yfxPointFs);

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Diagnostics;
+using System.Linq;
 using Lab_1.Model.Contracts;
 
 namespace Lab_1.Model.Calculators.SimulationTask
@@ -6,6 +8,10 @@ namespace Lab_1.Model.Calculators.SimulationTask
     class Simulator
     {
         private ProbabilityBasket _probabilityBasket;
+        private int _recoverCounter;
+        private int _successfullRecoverCounter;
+        private bool _recoveringIssued;
+        private bool _recoveryFailed;
 
         public Simulator(SimulationConfig config)
         {
@@ -23,11 +29,31 @@ namespace Lab_1.Model.Calculators.SimulationTask
         public void Run()
         {
             _probabilityBasket.Reset();
+            _successfullRecoverCounter = 0;
+            _recoverCounter = 0;
+            ReconfigurationFailed = false;
+            _recoveringIssued = false;
+            _recoveryFailed = false;
 
             for (int i = 0; i < IterationsCount; i++)
             {
                 RecoverSystem();
                 SimulateIteration();
+            }
+
+            if (_recoveringIssued == true)
+            {
+                if (_successfullRecoverCounter != 0)
+                {
+                    Status =
+                        $"Time: {SimulationTime} h, Average recover attempts: {_recoverCounter/_successfullRecoverCounter}";
+                }
+                else
+                {
+                    ReconfigurationFailed = true;
+                    Status =
+                        $"Time: {SimulationTime} h, All recoveries failed";
+                }
             }
 
             SuccesOperationProbability = _probabilityBasket.GetProbability();
@@ -61,14 +87,20 @@ namespace Lab_1.Model.Calculators.SimulationTask
             }
             else
             {
+                _recoveringIssued = true;
+
                 bool successfullReconfig = ControlReconfigurationSystem.ReconfigureSystem();
+                //Debug.WriteLine(TargetSystem.Floors.Aggregate("", (s, floor) => s += (int)floor.MajorityElement.Mode + " "));
 
                 if (successfullReconfig == true)
                 {
                     _probabilityBasket.Success();
+                    _recoverCounter += ControlReconfigurationSystem.RecoverAttemptsCount;
+                    _successfullRecoverCounter++;
                 }
                 else
                 {
+                    _recoveryFailed = true;
                     _probabilityBasket.Failed();
                 }
             }
@@ -90,5 +122,7 @@ namespace Lab_1.Model.Calculators.SimulationTask
             set { ControlReconfigurationSystem.ReconfigurationAlgorithm = value; }
         }
 
+        public string Status { get; set; }
+        public bool ReconfigurationFailed { get; set; }
     }
 }

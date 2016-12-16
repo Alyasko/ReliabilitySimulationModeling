@@ -95,6 +95,7 @@ namespace Lab_1.Model.Calculators.SimulationTask
                 systemWorks = CheckSystem();
                 if (systemWorks == true)
                 {
+                    RecoverAttemptsCount = i + 1;
                     break;
                 }
             }
@@ -108,5 +109,6 @@ namespace Lab_1.Model.Calculators.SimulationTask
 
         public TargetSystem TargetSystem { get; set; }
         public int MaximumReconfigurationTime { get; set; }
+        public int RecoverAttemptsCount { get; set; }
     }
 }
