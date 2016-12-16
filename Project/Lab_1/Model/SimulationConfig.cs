@@ -17,5 +17,6 @@ namespace Lab_1.Model
         public int RImpactElementsAffected { get; set; }
         public double ImpactProbability { get; set; }
         public double SimulationTime { get; set; }
+        public int ExperimentsCount { get; set; }
     }
 }

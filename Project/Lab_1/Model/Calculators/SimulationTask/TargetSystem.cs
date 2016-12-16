@@ -12,7 +12,10 @@ namespace Lab_1.Model.Calculators.SimulationTask
             FloorCount = floorCount;
             Floors = new Floor[FloorCount];
             for (int i = 0; i < FloorCount; i++)
-                Floors[i] = new Floor(elementFailureRate, majorityElementFailureRate);
+            {
+                Floor floor = new Floor(elementFailureRate, majorityElementFailureRate);
+                Floors[i] = floor;
+            }
         }
     }
 }

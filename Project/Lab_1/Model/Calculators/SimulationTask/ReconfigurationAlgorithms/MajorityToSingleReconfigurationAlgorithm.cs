@@ -3,14 +3,13 @@ using Lab_1.Model.Contracts;
 
 namespace Lab_1.Model.Calculators.SimulationTask.ReconfigurationAlgorithms
 {
-    class MajorityToSingleReconfigurationAlgorithm : IReconfigurationAlgorithm
+    class MajorityToSingleReconfigurationAlgorithm : AbstractReconfigurationAlgorithm
     {
         private int _depth;
-        private TargetSystem _targetSystem;
 
-        public void Reconfigure(TargetSystem targetSystem)
+        public override void Reconfigure(TargetSystem targetSystem)
         {
-            _targetSystem = targetSystem;
+            TargetSystem = targetSystem;
             _depth = targetSystem.Floors.Length;
             ShouldIncrement(0);
         }
@@ -21,7 +20,7 @@ namespace Lab_1.Model.Calculators.SimulationTask.ReconfigurationAlgorithms
 
             if (currentDepth >= _depth - 1)
             {
-                MajorityElementMode oldMode = _targetSystem.Floors[currentDepth].MajorityElement.Mode;
+                MajorityElementMode oldMode = TargetSystem.Floors[currentDepth].MajorityElement.Mode;
                 MajorityElementMode newMode = IncrementFloorMajorityElementMode(currentDepth);
 
                 if (newMode == MajorityElementMode.Majority && oldMode == MajorityElementMode.ThirdChannel)
@@ -34,7 +33,7 @@ namespace Lab_1.Model.Calculators.SimulationTask.ReconfigurationAlgorithms
                 bool shouldIncrement = ShouldIncrement(currentDepth + 1);
                 if (shouldIncrement == true)
                 {
-                    MajorityElementMode oldMode = _targetSystem.Floors[currentDepth].MajorityElement.Mode;
+                    MajorityElementMode oldMode = TargetSystem.Floors[currentDepth].MajorityElement.Mode;
                     MajorityElementMode newMode = IncrementFloorMajorityElementMode(currentDepth);
 
                     if (newMode == MajorityElementMode.Majority && oldMode == MajorityElementMode.ThirdChannel)
@@ -45,20 +44,6 @@ namespace Lab_1.Model.Calculators.SimulationTask.ReconfigurationAlgorithms
             }
 
             return result;
-        }
-
-        private MajorityElementMode IncrementFloorMajorityElementMode(int floorIndex)
-        {
-            MajorityElementMode majorityElementMode = _targetSystem.Floors[floorIndex].MajorityElement.Mode;
-            _targetSystem.Floors[floorIndex].MajorityElement.Mode = IncrementMajorityMode(majorityElementMode);
-
-            return _targetSystem.Floors[floorIndex].MajorityElement.Mode;
-        }
-
-        private MajorityElementMode IncrementMajorityMode(MajorityElementMode currentValue)
-        {
-            return (MajorityElementMode)
-                (((int) currentValue + 1)%Enum.GetNames(typeof(MajorityElementMode)).Length);
         }
     }
 }

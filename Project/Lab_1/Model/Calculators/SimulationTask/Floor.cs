@@ -9,9 +9,14 @@ namespace Lab_1.Model.Calculators.SimulationTask
         {
             MajorityElement = new MajorityElement(majorityElementFailureRate);
             Elements = new Element[3];
+            IsAlive = true;
 
             for (int i = 0; i < Elements.Length; i++)
-                Elements[i] = new Element(elementFailureRate);
+            {
+                Element element = new Element(elementFailureRate);
+                Elements[i] = element;
+
+            }
         }
 
         public bool IsAlive { get; set; }

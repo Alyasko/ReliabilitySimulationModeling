@@ -68,7 +68,14 @@ namespace Lab_1
                 IDictionary<string, PointF[]> data = _reliabilityAssessor.CalculatePlot(plotType, inputConfig);
 
                 DrawPlot(data, plotType);
-                rtbOutput.Text = _reliabilityAssessor.Output;
+                if (plotType == PlotType.SimulationModeling)
+                {
+                    rtbSimulationOutput.Text = _reliabilityAssessor.Output;
+                }
+                else
+                {
+                    rtbOutput.Text = _reliabilityAssessor.Output;
+                }
             }
         }
 
@@ -103,8 +110,9 @@ namespace Lab_1
         private InputConfig ReadInputConfig()
         {
             InputConfig inputConfig = new InputConfig();
-
+            
             Decimal multiMinusEight = (decimal)(Math.Pow(10, -8));
+            Decimal multiMinusSix = (decimal)(Math.Pow(10, -6));
             Decimal multiFour = 10000m;
             //Decimal multiThree = 1000m;
             Decimal multiTwo = 100m;
@@ -142,14 +150,15 @@ namespace Lab_1
             SimulationConfig simulationConfig = new SimulationConfig();
 
             simulationConfig.AlgoritmType = (ReconfigurationAlgoritmType) cmbSimulationReconfigurationAlgoritmType.SelectedIndex;
-            simulationConfig.LambdaControlReconfigurationSystem = nudLambdaControlReconfigurationSystem.Value;
-            simulationConfig.LambdaElement = nudLambdaElement.Value;
-            simulationConfig.LambdaMajorityElement = nudLambdaMajorityElement.Value;
+            simulationConfig.LambdaControlReconfigurationSystem = nudLambdaControlReconfigurationSystem.Value * multiMinusSix;
+            simulationConfig.LambdaElement = nudLambdaElement.Value * multiMinusSix;
+            simulationConfig.LambdaMajorityElement = nudLambdaMajorityElement.Value * multiMinusSix;
             simulationConfig.NTiersCount = (int) nudNTiersCount.Value;
             simulationConfig.RImpactElementsAffected = (int) nudRImpactElementsAffected.Value;
-            simulationConfig.SimulationTime = (double) nudSimulationTime.Value;
+            simulationConfig.SimulationTime = (double) nudSimulationLength.Value;
             simulationConfig.TAcceptableReconfigurationTime = (int) nudTAcceptableReconfigurationTime.Value;
             simulationConfig.ImpactProbability = (double) nudImpactProbability.Value;
+            simulationConfig.ExperimentsCount = (int) nudExperimentsCount.Value;
 
             inputConfig.SimulationConfig = simulationConfig;
 

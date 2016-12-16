@@ -17,7 +17,7 @@ namespace Lab_1.Model.Calculators.SimulationTask
             ControlReconfigurationSystem.FailureRate = config.LambdaControlReconfigurationSystem;
             ControlReconfigurationSystem.ReconfigurationAlgorithm = ReconfigureAlgorithm;
 
-            FailureInjector = new FailureInjector(TargetSystem, config.RImpactElementsAffected, config.SimulationTime, config.ImpactProbability);
+            FailureInjector = new FailureInjector(TargetSystem, ControlReconfigurationSystem, config.RImpactElementsAffected, SimulationTime, config.ImpactProbability);
         }
 
         public void Run()
@@ -26,14 +26,30 @@ namespace Lab_1.Model.Calculators.SimulationTask
 
             for (int i = 0; i < IterationsCount; i++)
             {
+                RecoverSystem();
                 SimulateIteration();
             }
 
             SuccesOperationProbability = _probabilityBasket.GetProbability();
         }
 
+        public void RecoverSystem()
+        {
+            ControlReconfigurationSystem.IsAlive = true;
+            foreach (Floor floor in TargetSystem.Floors)
+            {
+                floor.MajorityElement.IsAlive = true;
+                floor.MajorityElement.Mode = MajorityElementMode.Majority;
+                foreach (Element element in floor.Elements)
+                {
+                    element.IsAlive = true;
+                }
+            }
+        }
+
         private void SimulateIteration()
         {
+            FailureInjector.SimulationTime = SimulationTime;
             FailureInjector.SimulateWearingOff();
             FailureInjector.SimulateImpact();
 
@@ -59,7 +75,7 @@ namespace Lab_1.Model.Calculators.SimulationTask
         }
 
         public float SuccesOperationProbability { get; set; }
-        public Decimal SimulationTime { get; set; }
+        public double SimulationTime { get; set; }
         public int IterationsCount { get; set; }
 
 
